@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.j1902.shiro_zhongchou2.mapper.SysPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.qf.j1902.shiro_zhongchou2.pojo.SysPermission">
+    <!--@mbg.generated-->
+    <id column="permission_id" jdbcType="INTEGER" property="permissionId" />
+    <result column="per_name" jdbcType="VARCHAR" property="perName" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="menu_type" jdbcType="VARCHAR" property="menuType" />
+    <result column="menu_url" jdbcType="VARCHAR" property="menuUrl" />
+    <result column="menu_code" jdbcType="VARCHAR" property="menuCode" />
+    <result column="parent_code" jdbcType="VARCHAR" property="parentCode" />
+    <result column="per_desc" jdbcType="VARCHAR" property="perDesc" />
+    <result column="if_vilid" jdbcType="TINYINT" property="ifVilid" />
+    <result column="IconClass" jdbcType="VARCHAR" property="iconClass" />
+  </resultMap>
+
+  <resultMap id="BaseResultMap2" type="com.qf.j1902.shiro_zhongchou2.pojo.Children">
+    <!--@mbg.generated-->
+    <id column="permission_id" jdbcType="INTEGER" property="id" />
+    <result column="menu_name" jdbcType="VARCHAR" property="name" />
+    <result column="parent_code" jdbcType="VARCHAR" property="pid" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="checked" jdbcType="VARCHAR" property="checked" />
+  </resultMap>
+
+  <resultMap id="BaseResultList" type="integer">
+    <!--@mbg.generated-->
+    <id column="permission_id" jdbcType="INTEGER"/>
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    tb_sys_permission.permission_id,
+    tb_sys_permission.per_name,
+    tb_sys_permission.menu_name,
+    tb_sys_permission.menu_type,
+    tb_sys_permission.menu_url,
+    tb_sys_permission.menu_code,
+    tb_sys_permission.parent_code,
+    tb_sys_permission.per_desc,
+    tb_sys_permission.if_vilid,
+    tb_sys_permission.IconClass
+
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_sys_permission
+    where permission_id = #{permissionId,jdbcType=INTEGER}
+  </select>
+  <insert id="insert" keyColumn="permission_id" keyProperty="permissionId" parameterType="com.qf.j1902.shiro_zhongchou2.pojo.SysPermission" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_sys_permission (per_name, menu_name, menu_type, 
+      menu_url, menu_code, parent_code, 
+      per_desc, if_vilid,iconClass)
+    values (#{perName,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, #{menuType,jdbcType=VARCHAR}, 
+      #{menuUrl,jdbcType=VARCHAR}, #{menuCode,jdbcType=VARCHAR}, #{parentCode,jdbcType=VARCHAR}, 
+      #{perDesc,jdbcType=VARCHAR}, #{ifVilid,jdbcType=TINYINT},#{iconClass,jdbcType=VARCHAR} )
+  </insert>
+  <insert id="insertSelective" keyColumn="permission_id" keyProperty="permissionId" parameterType="com.qf.j1902.shiro_zhongchou2.pojo.SysPermission" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into tb_sys_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="perName != null and perName != ''">
+        per_name,
+      </if>
+      <if test="menuName != null and menuName != ''">
+        menu_name,
+      </if>
+      <if test="menuType != null and menuType != ''">
+        menu_type,
+      </if>
+      <if test="menuUrl != null and menuUrl != ''">
+        menu_url,
+      </if>
+      <if test="menuCode != null and menuCode != ''">
+        menu_code,
+      </if>
+      <if test="parentCode != null and parentCode != ''">
+        parent_code,
+      </if>
+      <if test="perDesc != null and perDesc != ''">
+        per_desc,
+      </if>
+      <if test="ifVilid != null">
+        if_vilid,
+      </if>
+      <if test="iconClass != null and iconClass != ''">
+        iconClass,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="perName != null and perName != ''">
+        #{perName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null and menuName != ''">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null and menuType != ''">
+        #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null and menuUrl != ''">
+        #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuCode != null and menuCode != ''">
+        #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCode != null and parentCode != ''">
+        #{parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="perDesc != null and perDesc != ''">
+        #{perDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ifVilid != null">
+        #{ifVilid,jdbcType=TINYINT},
+      </if>
+      <if test="iconClass != null and iconClass != ''">
+        #{iconClass,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.j1902.shiro_zhongchou2.pojo.SysPermission">
+    <!--@mbg.generated-->
+    update tb_sys_permission
+    <set>
+      <if test="perName != null and perName != ''">
+        per_name = #{perName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null and menuName != ''">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="menuType != null and menuType != ''">
+        menu_type = #{menuType,jdbcType=VARCHAR},
+      </if>
+      <if test="menuUrl != null and menuUrl != ''">
+        menu_url = #{menuUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="menuCode != null and menuCode != ''">
+        menu_code = #{menuCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCode != null and parentCode != ''">
+        parent_code = #{parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="perDesc != null and perDesc != ''">
+        per_desc = #{perDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="ifVilid != null">
+        if_vilid = #{ifVilid,jdbcType=TINYINT},
+      </if>
+      <if test="iconClass != null and iconClass != ''">
+        IconClass = #{iconClass,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where permission_id = #{permissionId,jdbcType=INTEGER}
+  </update>
+    <select id="findAllPermissionLevelOneMenuByUserNameAndMenuType" resultMap="BaseResultMap" parameterType="string">
+    select
+      <include refid="Base_Column_List"/>
+    from accounttab ,tb_acc_role ,tb_sys_role ,tb_role_permission ,tb_sys_permission
+    where accounttab.UserId = tb_acc_role.UserId AND
+      tb_acc_role.role_id = tb_sys_role.role_id AND
+      tb_sys_role.role_id = tb_role_permission.role_id AND
+      tb_role_permission.permission_id = tb_sys_permission.permission_id AND
+      accounttab.Account = #{account,jdbcType=VARCHAR} and
+      tb_sys_permission.menu_type = #{menuType,jdbcType=VARCHAR}
+      order by
+      tb_sys_permission.menu_code ASC
+    </select>
+
+<!--auto generated by MybatisCodeHelper on 2019-06-13-->
+  <select id="findAll" resultMap="BaseResultMap2">
+    select
+    tb_sys_permission.permission_id,
+    tb_sys_permission.menu_name,
+    tb_sys_permission.parent_code,
+    tb_sys_permission.per_desc,
+    tb_sys_permission.icon
+    from tb_sys_permission
+  </select>
+
+<!--auto generated by MybatisCodeHelper on 2019-06-14-->
+  <select id="findPermissionIdByMenuCodeList" resultMap="BaseResultList" >
+    select permission_id
+    from tb_sys_permission
+    where permission_id in
+    <foreach item="permissionId" index="index" collection="param1" open="(" separator="," close=")">
+     #{permissionId}
+    </foreach>
+  </select>
+  <select id="findAllByRoleId" resultMap="BaseResultMap2">
+    SELECT
+    tb_sys_permission.permission_id,
+    tb_sys_permission.menu_name,
+    tb_sys_permission.parent_code,
+    tb_sys_permission.per_desc,
+    tb_sys_permission.icon,
+    tb_role_permission.checked
+    FROM
+    tb_role_permission ,
+    tb_sys_permission
+    WHERE
+    tb_sys_permission.permission_id = tb_role_permission.permission_id AND
+    tb_role_permission.role_id = #{id,jdbcType=INTEGER}
+  </select>
+
+</mapper>

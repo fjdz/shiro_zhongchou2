@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    password: Dengyifan@971103
+    username: root
+    url: jdbc:mysql://119.3.175.48:3306/qf_zhongchou?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.qf.j1902.shiro_zhongchou.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
